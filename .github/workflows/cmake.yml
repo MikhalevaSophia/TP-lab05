@@ -28,7 +28,7 @@ jobs:
         run:  |
           git submodule update --init
           sudo apt install lcov
-          sudo apt install g++-7
+          sudo apt install g++
       - name: test
         shell: bash
         run: |
