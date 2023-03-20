@@ -28,7 +28,7 @@ EXPECT_EQ(acc.Account::GetBalance(), 100);
 TEST(Account, ChangeBalance){
 MockAccount acc(0, 100);
 EXPECT_THROW(acc.Account::ChangeBalance(50), std::runtime_error);
-acc.Account::Lock();
+//acc.Account::Lock();
 acc.Account::ChangeBalance(50);
 EXPECT_EQ(acc.Account::GetBalance(), 50);
 
