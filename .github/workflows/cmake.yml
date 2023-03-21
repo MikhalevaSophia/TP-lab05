@@ -61,7 +61,7 @@ jobs:
           cmake --build .
           ./RunTest
           lcov -t "banking" -o lcov.info -c -d .
-          lcov --remove lcov.info '/home/runner/work/lab05/lab05/third-party/googletest/*' -o lcov.info ###
+          lcov --remove lcov.info '/home/runner/work/lab05/lab05/third-party/googletest/*' -o lcov.info
           lcov --remove lcov.info '/home/runner/work/lab05/lab05/third-party/*' -o lcov.info
           lcov --remove lcov.info '/usr/include/*' -o lcov.info
           
