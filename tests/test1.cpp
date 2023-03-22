@@ -17,10 +17,10 @@ TEST(Account, Init){
 
 class MockTransaction: public Transaction{
 public:
-    MOCK_METHOD(void, set_fee, (int fee), (override));
-    MOCK_METHOD(void Credit, (Account& accout, int sum), (override));
-    MOCK_METHOD(bool Debit, (Account& accout, int sum), (override));
-    MOCK_METHOD(void, SaveToDataBase, (Account& from, Account& to, int sum), (override));
+    MOCK_METHOD1(void, set_fee, (int fee), (override));
+    MOCK_METHOD2(void Credit, (Account& accout, int sum), (override));
+    MOCK_METHOD3(bool Debit, (Account& accout, int sum), (override));
+    MOCK_METHOD4(void, SaveToDataBase, (Account& from, Account& to, int sum), (override));
 };
 
 TEST(Account, GetBalance){
