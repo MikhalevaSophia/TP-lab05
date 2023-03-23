@@ -17,10 +17,7 @@ TEST(Account, Init){
 
 class MockTransaction: public Transaction{
 public:
-    MOCK_METHOD1(void, set_fee, (int fee), (override));
-    MOCK_METHOD2(void Credit, (Account& accout, int sum), (override));
-    MOCK_METHOD3(bool Debit, (Account& accout, int sum), (override));
-    MOCK_METHOD4(void, SaveToDataBase, (Account& from, Account& to, int sum), (override));
+    MOCK_METHOD(void, SaveToDataBase, (Account& from, Account& to, int sum), (override));
 };
 
 TEST(Account, GetBalance){
@@ -57,31 +54,6 @@ EXPECT_THROW(tr.Make(from_acc,from_acc,0),std::logic_error);
 EXPECT_THROW(tr.Make(from_acc,to_acc,0),std::logic_error);
 EXPECT_THROW(tr.Make(from_acc,to_acc,-5),std::invalid_argument);
 }
-
-
-TEST(Transaction, set_fee){
-MockTransaction tr;
-tr.set_fee(5);
-EXPECT_EQ(tr.fee(),5);
-}
-
-TEST(Transaction, Credit) {
-MockAccount acc(15,100);
-MockTransaction tr;
-tr.Credit(acc,200);
-EXPECT_EQ(acc.GetBalance(),200);
-}
-
-TEST(Transaction, Debit) {
-MockAccount acc(15,100);
-MockTransaction tr;
-tr.Debit(acc,200);
-EXPECT_EQ(acc.GetBalance(),300);
-
-}
-
-
-
 
 TEST(Transaction, SaveToDataBase){
 MockAccount from_acc(15,17650);
