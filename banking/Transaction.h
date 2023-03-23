@@ -8,12 +8,12 @@ class Transaction {
   virtual ~Transaction();
 
   bool Make(Account& from, Account& to, int sum);
-  virtual int fee() const { return fee_; }
-  virtual void set_fee(int fee) { fee_ = fee; }
+  int fee() const { return fee_; }
+  void set_fee(int fee) { fee_ = fee; }
 
  private:
-  virtual void Credit(Account& accout, int sum);
-  virtual bool Debit(Account& accout, int sum);
+  void Credit(Account& accout, int sum);
+  bool Debit(Account& accout, int sum);
 
   // Virtual to test.
   virtual void SaveToDataBase(Account& from, Account& to, int sum);
